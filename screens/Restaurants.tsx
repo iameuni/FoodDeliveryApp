@@ -5,33 +5,31 @@ import Menu from '../components/menu';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParams } from '../App';
 
-type Props = NativeStackScreenProps<RootStackParams, 'RestaurantsStack'>;
+type Props = NativeStackScreenProps<RootStackParams, 'Restaurants'>;
 
-const RestaurantsScreen = ( {navigation}: Props ) => {
+const RestaurantsScreen = ({ navigation }:Props) => {
     return (
     <View style={styles.container}>
         <Text style={styles.screenTitle}>Restaurants Screen</Text>
         <ScrollView>
-            <RestaurantCard name="Sushi restaurant" 
-                onPress = {name => {
-                    navigation.navigate("Restaurant", { name });
-                }}
-            />
-            <RestaurantCard name="Burger restaurant" onPress = {name => {
-                    navigation.navigate("Restaurant", { name });
-                }}/>
-            <RestaurantCard name="Fine dining restaurant" onPress = {name => {
-                    navigation.navigate("Restaurant", { name });
-                }}/>
-            <RestaurantCard name="Sushi restaurant" onPress = {name => {
-                    navigation.navigate("Restaurant", { name });
-                }}/>
-            <RestaurantCard name="Burger restaurant" onPress = {name => {
-                    navigation.navigate("Restaurant", { name });
-                }}/>
-            <RestaurantCard name="Fine dining restaurant" onPress = {name => {
-                    navigation.navigate("Restaurant", { name });
-                }}/>
+            <RestaurantCard name="Sushi restaurant" onPress={name => {
+                navigation.navigate('Restaurant', {name});
+            }}/>
+            <RestaurantCard name="Burger restaurant" onPress={name => {
+                navigation.navigate('Restaurant', {name});
+            }}/>
+            <RestaurantCard name="Fine dining restaurant" onPress={name => {
+                navigation.navigate('Restaurant', {name});
+            }}/>
+            <RestaurantCard name="Sushi restaurant" onPress={name => {
+                navigation.navigate('Restaurant', {name});
+            }}/>
+            <RestaurantCard name="Burger restaurant" onPress={name => {
+                navigation.navigate('Restaurant', {name});
+            }}/>
+            <RestaurantCard name="Fine dining restaurant" onPress={name => {
+                navigation.navigate('Restaurant', {name});
+            }}/>
         </ScrollView>
         <Menu />
     </View>

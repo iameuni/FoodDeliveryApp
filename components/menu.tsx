@@ -17,7 +17,7 @@ const Menu = () => {
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => {
-                    navigation.navigate("RestaurantsStack")
+                    navigation.navigate("Restaurants")
                 }}>
                 <Text style={styles.link}>Restaurants</Text>
             </TouchableOpacity>
