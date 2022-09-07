@@ -21,7 +21,7 @@ const Menu = () => {
                 }}>
                 <Text style={styles.link}>Restaurants</Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            <TouchableOpacity 
                 onPress={() => {
                     navigation.navigate("Profile")
                 }}>

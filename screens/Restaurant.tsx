@@ -1,14 +1,27 @@
+import { NavigationContainer } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { RootStackParams } from "../App";
+import RestaurantCard from "../components/RestaurantCard";
 
 type Props = NativeStackScreenProps<RootStackParams, "Restaurant">
 
-const RestaurantScreen = ({ route }: Props) => {
+const RestaurantScreen = ({ route, navigation }: Props) => {
     return (
         <View style={styles.container}>
             <Text style={styles.screenTitle}>{route.params.name}</Text>
+
+            <Text>Related restaurants</Text>
+            <RestaurantCard name="Sushi 1" onPress={() => {
+                navigation.push("Restaurant", { name: "Sushi 1"})
+             }} />
+             <RestaurantCard name="Sushi 2" onPress={() => {
+                navigation.push("Restaurant", { name: "Sushi 2"})
+             }} />
+             <RestaurantCard name="Sushi 3" onPress={() => {
+                navigation.push("Restaurant", { name: "Sushi 3"})
+             }} />
         </View>
     );
 };

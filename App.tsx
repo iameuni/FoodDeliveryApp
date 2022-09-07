@@ -9,15 +9,32 @@ import RestaurantScreen from './screens/Restaurant';
 
 export type RootStackParams = {
   Explore;
-  Restaurants;
+  RestaurantsStack: RestaurantsStackParams;
   Profile;
   Restaurant: {
     name: string;
   }
 };
 
-const RootStack = createNativeStackNavigator<RootStackParams>();
+const RootStack = createBottomTabNavigator<RootStackParams>();
 
+export type RestaurantsStackParams = {
+  Restaurants;
+  Restaurant: {
+    name: string;
+  }
+}
+
+const RestaurantsStack = createNativeStackNavigator<RestaurantsStackParams>();
+
+const RestaurantScreenStack = () => {
+  return (
+    <RestaurantsStack.Navigator initialRouteName='Restaurants'>
+      <RestaurantsStack.Screen name="Restaurants" component={RestaurantsScreen} />
+      <RestaurantsStack.Screen name="Restaurant" component={RestaurantScreen} />
+    </RestaurantsStack.Navigator>
+  );
+};
 
 const App = () => {
 
@@ -25,9 +42,8 @@ const App = () => {
     <NavigationContainer>
       <RootStack.Navigator initialRouteName="Explore">
         <RootStack.Screen name="Explore" component={ExploreScreen} />
-        <RootStack.Screen name="Restaurants" component={RestaurantsScreen} />
+        <RootStack.Screen name="RestaurantsStack" component={RestaurantScreenStack} />
         <RootStack.Screen name="Profile" component={ProfileScreen} />
-        <RootStack.Screen name="Restaurant" component={RestaurantScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
