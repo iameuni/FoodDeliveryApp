@@ -62,7 +62,9 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="ExploreStack">
+      <RootStack.Navigator initialRouteName="ExploreStack" screenOptions={{
+        tabBarActiveTintColor: "#e67a15"
+      }}>
         <RootStack.Screen name="ExploreStack" component={ExploreScreenStack} options={{
           tabBarIcon: ({ color, size }) => <ExploreIcon color={color} size={size} />,
           tabBarLabel: "Explore"
