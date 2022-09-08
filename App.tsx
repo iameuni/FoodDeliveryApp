@@ -33,7 +33,10 @@ const RestaurantsStack = createNativeStackNavigator<RestaurantsStackParams>();
 
 const RestaurantScreenStack = () => {
   return (
-    <RestaurantsStack.Navigator initialRouteName='Restaurants'>
+    <RestaurantsStack.Navigator initialRouteName='Restaurants'
+      screenOptions={{
+        headerShown: false,
+      }}>
       <RestaurantsStack.Screen name="Restaurants" component={RestaurantsScreen} />
       <RestaurantsStack.Screen name="Restaurant" component={RestaurantScreen} />
     </RestaurantsStack.Navigator>
@@ -51,7 +54,10 @@ const ExploreStack = createNativeStackNavigator<ExploreStackParams>();
 
 const ExploreScreenStack = () => {
   return (
-    <ExploreStack.Navigator initialRouteName="Explore">
+    <ExploreStack.Navigator initialRouteName="Explore" 
+    screenOptions={{
+      headerShown: false,
+    }}>
       <ExploreStack.Screen name="Explore" component={ExploreScreen} />
       <ExploreStack.Screen name="Restaurant" component={RestaurantScreen} />
     </ExploreStack.Navigator>
@@ -63,7 +69,9 @@ const App = () => {
   return (
     <NavigationContainer>
       <RootStack.Navigator initialRouteName="ExploreStack" screenOptions={{
-        tabBarActiveTintColor: "#e67a15"
+        headerShown: false,
+        tabBarActiveTintColor: "#e67a15",
+        tabBarInactiveTintColor: "gray",
       }}>
         <RootStack.Screen name="ExploreStack" component={ExploreScreenStack} options={{
           tabBarIcon: ({ color, size }) => <ExploreIcon color={color} size={size} />,
