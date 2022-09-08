@@ -11,13 +11,13 @@ const Menu = () => {
             <Text style={styles.title}>Navigation</Text>
             <TouchableOpacity
                 onPress={() => {
-                    navigation.navigate("Explore")
+                    navigation.navigate("ExploreStack")
                 }}>
                 <Text style={styles.link}>Explore</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => {
-                    navigation.navigate("Restaurants")
+                    navigation.navigate("RestaurantsStack")
                 }}>
                 <Text style={styles.link}>Restaurants</Text>
             </TouchableOpacity>

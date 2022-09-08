@@ -5,7 +5,7 @@ import Menu from '../components/menu';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParams } from '../App';
 
-type Props = NativeStackScreenProps<RootStackParams, 'Restaurants'>;
+type Props = NativeStackScreenProps<RootStackParams, 'RestaurantsStack'>;
 
 const RestaurantsScreen = ({ navigation }:Props) => {
     return (

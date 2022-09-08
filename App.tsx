@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native';
 import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import ExploreScreen from './screens/Explore';
 import ProfileScreen from './screens/Profile';
@@ -6,24 +6,28 @@ import RestaurantsScreen from './screens/Restaurants';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import RestaurantScreen from './screens/Restaurant';
+import React from 'react';
+import ExploreIcon from './icons/ExploreIcon';
+import RestaurantIcon from './icons/RestaurantIcon';
+import ProfileIcon from './icons/ProfileIcon';
 
 export type RootStackParams = {
-  Explore;
-  RestaurantsStack: RestaurantsStackParams;
-  Profile;
+  ExploreStack: undefined;
+  RestaurantsStack: NavigatorScreenParams<RestaurantsStackParams>;
+  Profile: undefined;
   Restaurant: {
     name: string;
-  }
+  };
 };
 
 const RootStack = createBottomTabNavigator<RootStackParams>();
 
 export type RestaurantsStackParams = {
-  Restaurants;
+  Restaurants: undefined;
   Restaurant: {
     name: string;
-  }
-}
+  };
+};
 
 const RestaurantsStack = createNativeStackNavigator<RestaurantsStackParams>();
 
@@ -36,14 +40,44 @@ const RestaurantScreenStack = () => {
   );
 };
 
+export type ExploreStackParams = {
+  Explore: undefined;
+  Restaurant: {
+    name: string;
+  };
+};
+
+const ExploreStack = createNativeStackNavigator<ExploreStackParams>();
+
+const ExploreScreenStack = () => {
+  return (
+    <ExploreStack.Navigator initialRouteName="Explore">
+      <ExploreStack.Screen name="Explore" component={ExploreScreen} />
+      <ExploreStack.Screen name="Restaurant" component={RestaurantScreen} />
+    </ExploreStack.Navigator>
+  );
+};
+
 const App = () => {
 
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="Explore">
-        <RootStack.Screen name="Explore" component={ExploreScreen} />
-        <RootStack.Screen name="RestaurantsStack" component={RestaurantScreenStack} />
-        <RootStack.Screen name="Profile" component={ProfileScreen} />
+      <RootStack.Navigator initialRouteName="ExploreStack">
+        <RootStack.Screen name="ExploreStack" component={ExploreScreenStack} options={{
+          tabBarIcon: ({ color, size }) => <ExploreIcon color={color} size={size} />,
+          tabBarLabel: "Explore"
+        }} />
+        <RootStack.Screen
+          name="RestaurantsStack"
+          component={RestaurantScreenStack}
+          options={{
+            tabBarIcon: ({ color, size }) => <RestaurantIcon color={color} size={size} />,
+            tabBarLabel: "Restaurants"
+        }} />
+        <RootStack.Screen name="Profile" component={ProfileScreen} options={{
+          tabBarIcon: ({ color, size }) => <ProfileIcon color={color} size={size} />,
+          tabBarLabel: "Profile"
+        }} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
